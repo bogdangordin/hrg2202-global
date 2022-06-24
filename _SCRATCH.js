@@ -118,7 +118,7 @@ Just random scratch codes for future reference across multiple machinces
 // 1,0   1,1   1,2
 // 2,0   2,1   2,2
 
- 
+
 // console.log(rotLeft([
 //   41, 73, 89, 7, 10, 1, 59,
 //   58, 84, 77, 77, 97, 58, 1,
@@ -336,3 +336,10 @@ Just random scratch codes for future reference across multiple machinces
 
 // console.log(repeatedString('abadaaaabbbbbbbbbb', 11));
 // console.log(repeatedString2('abadaaaabbbbbbbbbb', 11));
+
+
+function minimumBribes(q) {
+  // Write your code here
+
+}
+
