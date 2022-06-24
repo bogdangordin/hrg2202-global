@@ -120,3 +120,210 @@
 //   13, 93, 71, 72, 51, 100,
 //   60, 87, 97
 // ], 13));
+
+// treeMethods.contains = function(target) {
+// var currChild = {
+//  value: this.value
+//  children: this.children
+// }
+//
+// var searchInner = function (child) {
+//
+//  if (child.value === target) {
+//    return true;
+//  }
+//
+//  for (var n = 0; n <= child.children.length - 1; n++) {
+//    return searchInner(child.children[n]);
+//  }
+//
+//  return false;
+// };
+//
+// return searchInner(currChild);
+// };
+
+// var x = 10;
+
+// function f () {
+//   x = x + 1;
+//   return x;
+// }
+
+// var result = f;
+// result = result();
+// console.log(result);
+
+// function sockMerchant(n, ar) {
+// ar = ar.sort((a, b) => {return a - b});
+
+
+//   return ar;
+// }
+
+
+// console.log(sockMerchant(7,[1,1,1,2,2,2,3]));
+
+
+// function countingValleys(steps, path) {
+//   if (typeof(steps) !== 'number' || typeof(path) !== 'string') {
+//       return null;
+//   } else if (steps <= 1 || path.length <= 1) {
+//       return 0;
+//   }
+
+//   var counter = 0;
+//   var elevation = 0;
+//   var arr = [0]
+
+//   for (var n = 0; n <= path.length - 1; n++) {
+//     if (path[n] === 'U') {
+//       elevation++;
+
+//       if (elevation === 0) {
+//         counter++;
+//       }
+
+//     } else if (path[n] === 'D') {
+//       elevation--;
+//     } else {
+//       return null;
+//     }
+//   }
+
+//   return counter;
+// }
+
+// console.log(countingValleys(8, 'UDDDUDUU')); // 1
+// console.log(countingValleys(8, 'DDUUUUDD')); // 1
+// console.log(countingValleys(16, 'UDDDUDUUUDDDUDUU')); // 2
+
+//  _/\      _/\      _
+//     \    /   \    /
+//      \/\/     \/\/
+
+
+
+
+// function jumpingOnClouds(c) {
+//   if (typeof (c) === 'string') {
+//     var temp = c.split(' ');
+//     temp = temp.join('');
+//   } else if (Array.isArray(c)) {
+//     var temp = c.join('');
+//   } else {
+//     return null;
+//   }
+
+//   var counter = 0;
+//   var n = 0;
+
+//   do {
+
+//     if (temp[n + 2] === '1') {
+//       n++;
+//       counter++;
+//     } else if (temp[n + 2] === undefined) {
+//       n++;
+//       counter++;
+//     } else {
+//       n += 2;
+//       counter++;
+//     }
+
+//   } while (n !== temp.length - 1);
+
+//   return counter;
+// }
+
+// console.log(jumpingOnClouds([0, 1, 0, 0, 0, 1, 0])); // 3 jumps // jump from: 0-2, 2-4, 4-6
+// console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])); // 4 // jump from: 0-1, 1-3, 3-4, 4-6
+
+
+
+
+// function repeatedString(s, n) {
+//   var mySet = new Set(s.split(''));
+//   if (mySet.size === 1 && mySet.has('a')) {
+//     return n;
+//   } else if (mySet.has('a') === false) {
+//     return 0;
+//   }
+
+//   var counter = 0;
+//   var absM = 0;
+//   var m = 0;
+
+//   do {
+//     if (s[m] === 'a') {
+//       counter++;
+//     }
+
+//     if (s[m + 1] === undefined) {
+//       m = 0;
+//     } else {
+//       m++;
+//     }
+
+//     absM++;
+//   } while (absM < n);
+
+//   return counter;
+// }
+
+// function repeatedString2(s, n) {
+
+//   let c = 0,
+//       ca = 0,
+//       r = n % s.length
+
+//   for (let i = s.length; i-- > 0;) {
+//     if (s[i] === 'a') {
+//       c++;
+
+//       if (i < r) {
+//         ca++;
+//       }
+//     }
+//   }
+
+//   return ((n - r) / s.length * c) + ca; 51574523448
+// }
+
+// function repeatedString(s, n) { // n = XY // 357,142
+//   var numOfA = s.split('a').length - 1;
+//   console.log("a: " + numOfA);
+
+//   var maxInStr = s.length;
+//   console.log("max: " + maxInStr);
+
+//   console.log("num: " + n);
+
+
+//   var x = numOfA / maxInStr;
+//   console.log(numOfA / maxInStr);
+
+//   // now we have n = (maxInStr/numOfA)Y
+//   // next we solve for Y by multiple both sides with (numOfA/maxInStr)
+
+//   var y = n * x;
+
+
+//   return y;
+// }
+
+
+// console.log(repeatedString('abcac', 10)); // creates abcacabcac cause 10 and counts the a chars// 4
+// console.log(repeatedString('baaaaaaabbbbgegdrsgaegeratga', 1000000)) // 357,147
+
+// console.log(repeatedString('ab', 1000000000000));
+// console.log(repeatedString('x', 970770));
+// console.log(repeatedString('kmretasscityylpdhuwjirnqimlkcgxubxmsxpypgzxtenweirknjtasxtvxemtwxuarabssvqdnktqaadhyktagjxoanknhgilnm', 736778906400)); // 58,358,725,257
+
+// console.log(repeatedString('baaaaaaabbbbgegdrsgaegeratga', 1000000));
+// console.log(repeatedString2('baaaaaaabbbbgegdrsgaegeratga', 1000000));
+
+
+
+// console.log(repeatedString('abadaaaabbbbbbbbbb', 11));
+// console.log(repeatedString2('abadaaaabbbbbbbbbb', 11));
