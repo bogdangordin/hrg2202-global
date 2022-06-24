@@ -1,3 +1,12 @@
+/*
+_SCRATCH
+Bogdan Gordin
+2/12/20
+Just random scratch codes for future reference across multiple machinces
+*/
+
+
+
 // treeMethods.contains = function(target) {
 // var currChild = {
 //  value: this.value
