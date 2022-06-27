@@ -356,11 +356,15 @@ function editor(operations) {
       case 'TYPE':
         myStr_prevs = myStr;
         curs_at_prev = curs_at;
+        undone = false;
 
-        if (selected[0] !== selected[1]) {
-          var up_to_curs = myStr.slice(0, selected[0]);
+
+        if (selected[0] !== 0 && selected[1] !== 0) {
+          var up_to_curs = myStr.slice(0, selected[0]+1);
           var rest_from_curs = myStr.slice(selected[1]);
+
           myStr = up_to_curs + op[1] + rest_from_curs;
+
           curs_at = curs_at + op[1].length;
         } else {
           var up_to_curs = myStr.slice(0, curs_at);
@@ -376,6 +380,7 @@ function editor(operations) {
 
 
       case 'MOVE_CURSOR':
+        undone = false;
         selected = [0, 0];
         curs_at_prev = curs_at;
 
@@ -391,10 +396,19 @@ function editor(operations) {
 
 
       case 'SELECT':
+        undone = false;
         selected = [0, 0];
 
-        selected = [op[1], op[2]];
-        curs_at = op[2];
+        curs_at_prev = curs_at;
+
+        selected = [parseInt(op[1]), parseInt(op[2])];
+        curs_at = parseInt(op[2]);
+
+        if (curs_at < 0) {
+          curs_at = 0;
+        } else if (curs_at > myStr.length) {
+          curs_at = myStr.length;
+        }
         break;
 
 
@@ -405,6 +419,8 @@ function editor(operations) {
           myStr = myStr_prevs;
           curs_at = curs_at_prev;
         }
+        selected = [0, 0];
+
 
         break;
 
@@ -425,19 +441,19 @@ function editor(operations) {
 
 
 
-console.log(editor([
-  "TYPE hello",
-  "TYPE world",
-  "MOVE_CURSOR -5",
-  "TYPE there"])); // hellothereworld
+// console.log(editor([
+//   "TYPE hello",
+//   "TYPE world",
+//   "MOVE_CURSOR -5",
+//   "TYPE there"])); // hellothereworld
 
 console.log(editor([
   "TYPE Code", // Code|
   "TYPE Signal", // CodeSignal|
   "MOVE_CURSOR -3", // CodeSig|nal
-  "SELECT 5 8",
-  "TYPE ou",
-  "UNDO",
+  "SELECT 5 8", // CodeS[igna]|l // CodeSl
+  "TYPE ou", // CodeSou|l
+  "UNDO", // CodeSou|l // CodeSigna|l
   "TYPE nio"])); // CodeSignaniol
 
 
