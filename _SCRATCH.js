@@ -5,7 +5,7 @@ Bogdan Gordin
 Just random scratch codes for future reference across multiple machinces
 */
 
-
+// ------------------------------------------------------------------------------------------------------------------------
 
 // treeMethods.contains = function(target) {
 // var currChild = {
@@ -71,7 +71,7 @@ Just random scratch codes for future reference across multiple machinces
 // console.log(sockMerchant(7, [1,2,1,2,3,1,2])); // 1,1,1,2,2,2,3 // 2
 // console.log(sockMerchant(20, [4, 5, 5, 5, 6, 6, 4, 1, 4, 4, 3, 6 ,6, 3 ,6 ,1, 4, 5 ,5, 5])); // 9
 
-
+// ------------------------------------------------------------------------------------------------------------------------
 
 // function hourglassSum(arr) {
 //   var currMax = Number.NEGATIVE_INFINITY;
@@ -173,6 +173,8 @@ Just random scratch codes for future reference across multiple machinces
 
 // console.log(sockMerchant(7,[1,1,1,2,2,2,3]));
 
+// ------------------------------------------------------------------------------------------------------------------------
+
 
 // function countingValleys(steps, path) {
 //   if (typeof(steps) !== 'number' || typeof(path) !== 'string') {
@@ -211,6 +213,7 @@ Just random scratch codes for future reference across multiple machinces
 //     \    /   \    /
 //      \/\/     \/\/
 
+// ------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -248,6 +251,7 @@ Just random scratch codes for future reference across multiple machinces
 // console.log(jumpingOnClouds([0, 1, 0, 0, 0, 1, 0])); // 3 jumps // jump from: 0-2, 2-4, 4-6
 // console.log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])); // 4 // jump from: 0-1, 1-3, 3-4, 4-6
 
+// ------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -338,106 +342,109 @@ Just random scratch codes for future reference across multiple machinces
 // console.log(repeatedString2('abadaaaabbbbbbbbbb', 11));
 
 
-function editor(operations) {
-  var myStr = '';
-  var curs_at = 0;
-
-  var undone = false;
-  var myStr_prev = '';
-  var curs_at_prev = 0;
-
-  var selected = [0, 0];
+// ------------------------------------------------------------------------------------------------------------------------
 
 
-  for (var n = 0; n <= operations.length - 1; n++) {
-    var op = operations[n].split(' ');
+// function editor(operations) {
+//   var myStr = '';
+//   var curs_at = 0;
 
-    switch (op[0]) {
-      case 'TYPE':
-        myStr_prevs = myStr;
-        curs_at_prev = curs_at;
-        undone = false;
+//   var undone = false;
+//   var myStr_prev = '';
+//   var curs_at_prev = 0;
 
-
-        if (selected[0] !== 0 && selected[1] !== 0) {
-          var up_to_curs = myStr.slice(0, selected[0]+1);
-          var rest_from_curs = myStr.slice(selected[1]);
-
-          myStr = up_to_curs + op[1] + rest_from_curs;
-
-          curs_at = curs_at + op[1].length;
-        } else {
-          var up_to_curs = myStr.slice(0, curs_at);
-          var rest_from_curs = myStr.slice(curs_at);
-          myStr = up_to_curs + op[1] + rest_from_curs;
-          curs_at = curs_at + op[1].length;
-        }
+//   var selected = [0, 0];
 
 
+//   for (var n = 0; n <= operations.length - 1; n++) {
+//     var op = operations[n].split(' ');
 
-        console.log(myStr);
-        break;
-
-
-      case 'MOVE_CURSOR':
-        undone = false;
-        selected = [0, 0];
-        curs_at_prev = curs_at;
-
-        curs_at = curs_at + parseInt(op[1]);
-
-        if (curs_at < 0) {
-          curs_at = 0;
-        } else if (curs_at > myStr.length) {
-          curs_at = myStr.length;
-        }
-
-        break;
+//     switch (op[0]) {
+//       case 'TYPE':
+//         myStr_prevs = myStr;
+//         curs_at_prev = curs_at;
+//         undone = false;
 
 
-      case 'SELECT':
-        undone = false;
-        selected = [0, 0];
+//         if (selected[0] !== 0 && selected[1] !== 0) {
+//           var up_to_curs = myStr.slice(0, selected[0]+1);
+//           var rest_from_curs = myStr.slice(selected[1]);
 
-        curs_at_prev = curs_at;
+//           myStr = up_to_curs + op[1] + rest_from_curs;
 
-        selected = [parseInt(op[1]), parseInt(op[2])];
-        curs_at = parseInt(op[2]);
-
-        if (curs_at < 0) {
-          curs_at = 0;
-        } else if (curs_at > myStr.length) {
-          curs_at = myStr.length;
-        }
-        break;
-
-
-      case 'UNDO':
-        if (undone === false) {
-          undone = true;
-          selected = [0, 0];
-          myStr = myStr_prevs;
-          curs_at = curs_at_prev;
-        }
-        selected = [0, 0];
-
-
-        break;
-
-
-      default:
-        console.log('error');
-        return null;
-    }
+//           curs_at = curs_at + op[1].length;
+//         } else {
+//           var up_to_curs = myStr.slice(0, curs_at);
+//           var rest_from_curs = myStr.slice(curs_at);
+//           myStr = up_to_curs + op[1] + rest_from_curs;
+//           curs_at = curs_at + op[1].length;
+//         }
 
 
 
-  }
+//         console.log(myStr);
+//         break;
+
+
+//       case 'MOVE_CURSOR':
+//         undone = false;
+//         selected = [0, 0];
+//         curs_at_prev = curs_at;
+
+//         curs_at = curs_at + parseInt(op[1]);
+
+//         if (curs_at < 0) {
+//           curs_at = 0;
+//         } else if (curs_at > myStr.length) {
+//           curs_at = myStr.length;
+//         }
+
+//         break;
+
+
+//       case 'SELECT':
+//         undone = false;
+//         selected = [0, 0];
+
+//         curs_at_prev = curs_at;
+
+//         selected = [parseInt(op[1]), parseInt(op[2])];
+//         curs_at = parseInt(op[2]);
+
+//         if (curs_at < 0) {
+//           curs_at = 0;
+//         } else if (curs_at > myStr.length) {
+//           curs_at = myStr.length;
+//         }
+//         break;
+
+
+//       case 'UNDO':
+//         if (undone === false) {
+//           undone = true;
+//           selected = [0, 0];
+//           myStr = myStr_prevs;
+//           curs_at = curs_at_prev;
+//         }
+//         selected = [0, 0];
+
+
+//         break;
+
+
+//       default:
+//         console.log('error');
+//         return null;
+//     }
 
 
 
-  return myStr;
-}
+//   }
+
+
+
+//   return myStr;
+// }
 
 
 
@@ -447,14 +454,46 @@ function editor(operations) {
 //   "MOVE_CURSOR -5",
 //   "TYPE there"])); // hellothereworld
 
-console.log(editor([
-  "TYPE Code", // Code|
-  "TYPE Signal", // CodeSignal|
-  "MOVE_CURSOR -3", // CodeSig|nal
-  "SELECT 5 8", // CodeS[igna]|l // CodeSl
-  "TYPE ou", // CodeSou|l
-  "UNDO", // CodeSou|l // CodeSigna|l
-  "TYPE nio"])); // CodeSignaniol
+// console.log(editor([
+//   "TYPE Code", // Code|
+//   "TYPE Signal", // CodeSignal|
+//   "MOVE_CURSOR -3", // CodeSig|nal
+//   "SELECT 5 8", // CodeS[igna]|l // CodeSl
+//   "TYPE ou", // CodeSou|l
+//   "UNDO", // CodeSou|l // CodeSigna|l
+//   "TYPE nio"])); // CodeSignaniol
 
 
-// console.log();
+// ------------------------------------------------------------------------------------------------------------------------
+
+
+// function solution(cntProducts, quantities, costs, meals) {
+//   //      int === total prods to use
+//   //      arr[product][shop] === amount in shop
+//   //      arr2[product][shop] === costed in shop
+//   //      arr3[product][meal] === prods need to make a meal
+//   var arr = [];
+//   var max_shops = quantities.length - 1;
+
+//   meals.forEach((meal, index) => {
+//       var lowest_meal_costs = Number.POSITIVE_INFINITY;
+
+//       for (var n = 0; n <= max_shops; n++){
+//           var products = quantities[n];
+//           var costing = costs[n];
+
+
+//       }
+
+
+//   });
+
+
+
+//   return arr;
+// }
+
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+
