@@ -300,7 +300,7 @@ Just random scratch codes for future reference across multiple machinces
 //     }
 //   }
 
-//   return ((n - r) / s.length * c) + ca; 51574523448
+//   return ((n - r) / s.length * c) + ca; // 51574523448
 // }
 
 // function repeatedString(s, n) { // n = XY // 357,142
@@ -497,3 +497,86 @@ Just random scratch codes for future reference across multiple machinces
 // ------------------------------------------------------------------------------------------------------------------------
 
 
+// function minimumBribes(q) { // arr === que of numbers
+//   var counter = 0;
+
+//   var curr_person = undefined;
+//   var curr_person_bribes = 0;
+//   var chaotic = false;
+
+//   for (var n = 0; n <= q.length-2; n++) {
+//     console.log('-----' + counter);
+
+//     curr_person = q[n];
+
+//     if ((curr_person - (n+1)) >= 3) {
+//       var chaotic = true;
+//       break;
+//     }
+
+//   };
+
+//   console.log('-----' + counter);
+
+//   console.log(chaotic ? 'Too chaotic' : counter);
+// }
+
+
+
+
+// // minimumBribes([ 2, 1, 5, 3, 4 ]); // 3
+// // minimumBribes([ 2, 5, 1, 3, 4 ]); // Too chaotic'
+// // minimumBribes([5 ,1 ,2, 3, 7 ,8 ,6, 4]); // Too chaotic
+// minimumBribes([1, 2, 5, 3 ,7 ,8 ,6 ,4]); // 7
+
+// [1, 2, 5, 3 ,7 ,8 ,6 ,4]
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+
+// function isBalanced(s) {
+//   s = s.split('');
+//   if (s.length <= 1) return 'NO';
+//   if (s.length % 2 === 1) return 'NO';
+
+//   var arr = [];
+//   var broken = false;
+
+//   s.forEach((ele) => {
+
+//     switch(ele) {
+//       case '[':
+//         arr.unshift(']');
+//         break;
+
+//       case '{':
+//         arr.unshift('}');
+//         break;
+
+//       case '(':
+//         arr.unshift(')');
+//         break;
+
+//       default:
+//         var temp = arr.shift();
+//         if (temp !== ele) {
+//           broken = true;
+//           return;
+//         }
+//     }
+
+//   });
+
+//   return broken || arr.length > 0 ? 'NO' : 'YES';
+// }
+
+
+
+// console.log(isBalanced('({[()]})')); // YES
+// console.log(isBalanced('{[(])}')); // NO
+// console.log(isBalanced('{{[[(())]]}}')); // YES
+// console.log(isBalanced(       '{({}[])}'        )); // yes
+
+// console.log(isBalanced('[()][{}[{}[{}]]][]{}[]{}[]{{}({}(){({{}{}[([[]][[]])()]})({}{{}})})}'));
+
+// ------------------------------------------------------------------------------------------------------------------------
