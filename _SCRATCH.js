@@ -580,3 +580,76 @@ Just random scratch codes for future reference across multiple machinces
 // console.log(isBalanced('[()][{}[{}[{}]]][]{}[]{}[]{{}({}(){({{}{}[([[]][[]])()]})({}{{}})})}'));
 
 // ------------------------------------------------------------------------------------------------------------------------
+
+
+// function processData(input) {
+//   var commands = input.split('\n');
+//   commands.shift();
+//   var arr = [];
+
+//   commands.forEach((ele) => {
+//     var comm = ele.split(' ');
+//     switch(comm[0]) {
+//       case '1':
+//         arr.push(comm[1]);
+//         break;
+
+//       case '2':
+//         arr.shift();
+//         break;
+
+//       case '3':
+//         console.log(arr[0]);
+//         break;
+
+//       default:
+//           return;
+//     }
+//   });
+// }
+
+
+
+// var data = `10
+// 1 42
+// 2
+// 1 14
+// 3
+// 1 28
+// 3
+// 1 60
+// 1 78
+// 2
+// 2`;
+
+// processData(data);
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+
+function largestRectangle(h) {
+  var myNum = 0;
+
+  for (var n = 0; n <= h.length-1; n++){
+    var counter = 1;
+    var max_height = h[n];
+    var reached_max_length = false;
+
+    while (reached_max_length === false) {
+      if (h[n] <= h[n+counter]) {
+        max_height = h[n+counter];
+        counter++;
+      } else {
+        reached_max_length = true;
+      }
+    }
+
+    myNum = h[n] * counter >= myNum ? h[n] * counter : myNum;
+  }
+
+  return myNum;
+}
+
+console.log(largestRectangle([ 1, 2, 3, 4, 5 ])); // 9 // 3 * [3,4,5].length
+console.log(largestRectangle([ 1, 3, 5, 9, 11 ])); // 18
+console.log(largestRectangle([ 11, 11, 10, 10, 10 ])); // 50
