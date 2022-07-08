@@ -41,10 +41,10 @@ Just random scratch codes for future reference across multiple machinces
 // console.log(result);
 
 function sockMerchant(n, ar) { // [1,1,1,2,2,2,3]
-  if (typeof(n) !== 'number' || Array.isArray(ar) !== true) {
-      return null;
+  if (typeof (n) !== 'number' || Array.isArray(ar) !== true) {
+    return null;
   } else if (n <= 1 || ar.length <= 1) {
-      return 0;
+    return 0;
   }
 
   ar = ar.sort((a, b) => { return a - b; })
@@ -53,7 +53,7 @@ function sockMerchant(n, ar) { // [1,1,1,2,2,2,3]
   var counter = 0;
 
   for (var n = 1; n <= ar.length - 1; n += 2) {
-    if (ar[n-1] === ar[n]) {
+    if (ar[n - 1] === ar[n]) {
       counter++;
     } else {
       n--;
@@ -177,10 +177,10 @@ function hourglassSum(arr) {
 
 
 function countingValleys(steps, path) {
-  if (typeof(steps) !== 'number' || typeof(path) !== 'string') {
-      return null;
+  if (typeof (steps) !== 'number' || typeof (path) !== 'string') {
+    return null;
   } else if (steps <= 1 || path.length <= 1) {
-      return 0;
+    return 0;
   }
 
   var counter = 0;
@@ -287,8 +287,8 @@ function repeatedString(s, n) {
 function repeatedString2(s, n) {
 
   let c = 0,
-      ca = 0,
-      r = n % s.length
+    ca = 0,
+    r = n % s.length
 
   for (let i = s.length; i-- > 0;) {
     if (s[i] === 'a') {
@@ -367,7 +367,7 @@ function editor(operations) {
 
 
         if (selected[0] !== 0 && selected[1] !== 0) {
-          var up_to_curs = myStr.slice(0, selected[0]+1);
+          var up_to_curs = myStr.slice(0, selected[0] + 1);
           var rest_from_curs = myStr.slice(selected[1]);
 
           myStr = up_to_curs + op[1] + rest_from_curs;
@@ -476,22 +476,23 @@ function solution(cntProducts, quantities, costs, meals) {
   var max_shops = quantities.length - 1;
 
   meals.forEach((meal, index) => {
-      var lowest_meal_costs = Number.POSITIVE_INFINITY;
+    var lowest_meal_costs = Number.POSITIVE_INFINITY;
 
-      for (var n = 0; n <= max_shops; n++){
-          var products = quantities[n];
-          var costing = costs[n];
+    for (var n = 0; n <= max_shops; n++) {
+      var products = quantities[n];
+      var costing = costs[n];
 
 
-      }
+    }
 
 
   });
 
 
 
-//   return arr;
-// }
+  return arr;
+}
+
 
 
 // ------------------------------------------------------------------------------------------------------------------------
@@ -504,19 +505,19 @@ function minimumBribes(q) { // arr === que of numbers
   var curr_person_bribes = 0;
   var chaotic = false;
 
-  for (var n = 0; n <= q.length-2; n++) {
-    console.log('-----' + counter);
+  for (var n = 0; n <= q.length - 2; n++) {
+    // console.log('-----' + counter);
 
     curr_person = q[n];
 
-    if ((curr_person - (n+1)) >= 3) {
+    if ((curr_person - (n + 1)) >= 3) {
       var chaotic = true;
       break;
     }
 
   };
 
-  console.log('-----' + counter);
+  // console.log('-----' + counter);
 
   console.log(chaotic ? 'Too chaotic' : counter);
 }
@@ -544,7 +545,7 @@ function isBalanced(s) {
 
   s.forEach((ele) => {
 
-    switch(ele) {
+    switch (ele) {
       case '[':
         arr.unshift(']');
         break;
@@ -589,7 +590,7 @@ function processData(input) {
 
   commands.forEach((ele) => {
     var comm = ele.split(' ');
-    switch(comm[0]) {
+    switch (comm[0]) {
       case '1':
         arr.push(comm[1]);
         break;
@@ -603,7 +604,7 @@ function processData(input) {
         break;
 
       default:
-          return;
+        return;
     }
   });
 }
@@ -636,7 +637,7 @@ function largestRectangle(h) {
 
     // skip some heights depending on somethin? to make the prog faster
 
-    for (var n = index+1; n <= h.length-1; n++){
+    for (var n = index + 1; n <= h.length - 1; n++) {
       length++;
       if (h[n] < lowest_height) lowest_height = h[n];
       if (lowest_height * length > max_area) max_area = lowest_height * length;
@@ -647,6 +648,25 @@ function largestRectangle(h) {
 
   return max_area;
 }
+
+// function largestRectangle(h) {
+//   let maxArea = h.length;
+//   h.forEach((value, index) => {
+//       let i = index + 1;
+//       let j = index - 1;
+//       let tempArea = value;
+//       while (i < h.length && h[i] >= value) {
+//           tempArea += value;
+//           i++;
+//       }
+//       while (j >= 0 && h[j] >= value) {
+//           tempArea += value;
+//           j--;
+//       }
+//       maxArea = Math.max(tempArea, maxArea);
+//   });
+//   return maxArea;
+// }
 
 // Math.min(...arr).toString()
 //arr.indexOf();
@@ -744,7 +764,37 @@ function countSwaps(a) {
 
 // ------------------------------------------------------------------------------------------------------------------------
 
-function maximumToys(prices, k) {
-  // Write your code here
+function maximumToys(prices, k) { // arr of int unsorted // money
+  var max_toys = 0;
 
+  for (var n = 1; n <= prices.length - 1; n++) {
+    var curr = prices[n];
+    var m = n - 1;
+
+    while ((m > -1) && (curr < prices[m])) {
+      prices[m + 1] = prices[m];
+      m--;
+    }
+
+    prices[m + 1] = curr;
+  }
+
+  prices.forEach((toy) => {
+    if (k - toy <= 0) {
+      return;
+    } else {
+      max_toys++;
+      k -= toy;
+    }
+  });
+
+  return max_toys;
 }
+
+// console.log(maximumToys([ 1, 2, 3 ], 7)); // 3
+// console.log(maximumToys([1, 12, 5, 111, 200, 1000, 10], 50)); // 4
+// console.log(maximumToys([1, 2, 3, 4], 7)); // 3
+// console.log(maximumToys([3, 7, 2, 9, 4], 15)); // 3
+
+// ------------------------------------------------------------------------------------------------------------------------
+
