@@ -798,3 +798,24 @@ function maximumToys(prices, k) { // arr of int unsorted // money
 
 // ------------------------------------------------------------------------------------------------------------------------
 
+function twoStrings(s1, s2) { // str str
+  s1 = [... new Set(s1.split(''))];
+  s2 = [... new Set(s2.split(''))];
+
+  var share = false;
+
+  s1.forEach((char) => {
+    if (s2.includes(char)) {
+      share = true;
+      return;
+    }
+  });
+
+  return share ? 'YES' : 'NO';
+}
+
+
+// console.log(twoStrings('hello', 'world'));
+
+// ------------------------------------------------------------------------------------------------------------------------
+
