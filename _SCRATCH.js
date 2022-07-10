@@ -818,6 +818,31 @@ function twoStrings(s1, s2) { // str str
 // console.log(twoStrings('hello', 'world'));
 
 // ------------------------------------------------------------------------------------------------------------------------
+
+
+function alternatingCharacters(s) {
+  var num = 0;
+  var curr = s[0]
+
+  for (var n = 1; n <= s.length - 1; n++) {
+    if (s[n] === curr) {
+      num++;
+    }
+    curr = s[n];
+  }
+
+
+  return num;
+}
+
+// console.log(alternatingCharacters('AAABBB')); // 4
+// console.log(alternatingCharacters('BBBBB')); // 4
+// console.log(alternatingCharacters('ABABABAB')); // 0
+
 // ------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------------------------------------------------
+
+
+function makeAnagram(a, b) {
+  // Write your code here
+
+}
