@@ -843,6 +843,35 @@ function alternatingCharacters(s) {
 
 
 function makeAnagram(a, b) {
+  var unq_arrA = [... new Set(a.split(''))];
+  var unq_arrB = [... new Set(b.split(''))];
+
+  var none = unq_arrA.every((char) => {
+    return !unq_arrB.includes(char);
+  });
+
+  if (none === true) { // is both str have nothing in common, then an empty string is the anagram between those two
+    return a.length + b.length;
+  }
+
+  var all_chars = [... new Set((a + b).split(''))];
+  var num = 0;
+
+  all_chars.forEach((char) => {
+    // console.log(Math.abs((a.split(char).length - 1) - (b.split(char).length - 1)));
+    num += Math.abs((a.split(char).length - 1) - (b.split(char).length - 1));
+  });
+
+  return num;
+}
+
+// console.log(makeAnagram('showman', 'woman')); // 2
+// console.log(makeAnagram('fcrxzwscanmligyxyvym','jxwtrhvujlmrpdoqbisbwhmgpmeoke')); // 30
+// console.log(makeAnagram('cde','abc')); // 4
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+function minimumAbsoluteDifference(arr) {
   // Write your code here
 
 }
