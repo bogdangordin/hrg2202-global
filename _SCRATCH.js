@@ -60,7 +60,6 @@ function sockMerchant(n, ar) { // [1,1,1,2,2,2,3]
     }
   }
 
-
   return counter;
 }
 
@@ -336,8 +335,6 @@ function repeatedString2(s, n) {
 // console.log(repeatedString('baaaaaaabbbbgegdrsgaegeratga', 1000000));
 // console.log(repeatedString2('baaaaaaabbbbgegdrsgaegeratga', 1000000));
 
-
-
 // console.log(repeatedString('abadaaaabbbbbbbbbb', 11));
 // console.log(repeatedString2('abadaaaabbbbbbbbbb', 11));
 
@@ -355,7 +352,6 @@ function editor(operations) {
 
   var selected = [0, 0];
 
-
   for (var n = 0; n <= operations.length - 1; n++) {
     var op = operations[n].split(' ');
 
@@ -364,7 +360,6 @@ function editor(operations) {
         myStr_prevs = myStr;
         curs_at_prev = curs_at;
         undone = false;
-
 
         if (selected[0] !== 0 && selected[1] !== 0) {
           var up_to_curs = myStr.slice(0, selected[0] + 1);
@@ -380,11 +375,8 @@ function editor(operations) {
           curs_at = curs_at + op[1].length;
         }
 
-
-
         console.log(myStr);
         break;
-
 
       case 'MOVE_CURSOR':
         undone = false;
@@ -400,7 +392,6 @@ function editor(operations) {
         }
 
         break;
-
 
       case 'SELECT':
         undone = false;
@@ -418,7 +409,6 @@ function editor(operations) {
         }
         break;
 
-
       case 'UNDO':
         if (undone === false) {
           undone = true;
@@ -427,28 +417,20 @@ function editor(operations) {
           curs_at = curs_at_prev;
         }
         selected = [0, 0];
-
-
         break;
-
 
       default:
         console.log('error');
         return null;
     }
 
-
-
   }
-
-
 
   return myStr;
 }
 
 
-
-// console.log(editor([
+// console.og(editor([
 //   "TYPE hello",
 //   "TYPE world",
 //   "MOVE_CURSOR -5",
@@ -482,17 +464,12 @@ function solution(cntProducts, quantities, costs, meals) {
       var products = quantities[n];
       var costing = costs[n];
 
-
     }
-
 
   });
 
-
-
   return arr;
 }
-
 
 
 // ------------------------------------------------------------------------------------------------------------------------
@@ -875,27 +852,27 @@ function minimumAbsoluteDifference(arr) {
   var min_diff = Number.POSITIVE_INFINITY;
 
   for (var n = 1; n <= arr.length - 1; n++) {
-      var curr = arr[n];
-      var m = n - 1;
+    var curr = arr[n];
+    var m = n - 1;
 
-      while ((m > -1) && (curr < arr[m])) {
-          arr[m + 1] = arr[m];
-          m--;
-      }
+    while ((m > -1) && (curr < arr[m])) {
+      arr[m + 1] = arr[m];
+      m--;
+    }
 
-      arr[m + 1] = curr;
+    arr[m + 1] = curr;
   }
 
   // arr = arr.sort();
 
   for (var o = 1; o <= arr.length - 1; o++) {
 
-      min_diff = Math.abs(arr[o-1] - arr[o]) < min_diff ? Math.abs(arr[o-1] - arr[o]) : min_diff;
+    min_diff = Math.abs(arr[o - 1] - arr[o]) < min_diff ? Math.abs(arr[o - 1] - arr[o]) : min_diff;
 
-      if (min_diff === 0) {
-          console.log('SKIP');
-          return min_diff;
-      }
+    if (min_diff === 0) {
+      console.log('SKIP');
+      return min_diff;
+    }
   }
 
 
@@ -908,4 +885,33 @@ function minimumAbsoluteDifference(arr) {
 
 // ------------------------------------------------------------------------------------------------------------------------
 
+function fibonacci(n) {
+  return n > 1 ? fibonacci(n - 1) + fibonacci(n - 2) : n;
+}
 
+// function fibonacci(n) {
+//   if n === 0 return 0;
+//   if n === 1 return 1;
+//   if n === 2 return 1;
+
+//   var counter = 0;
+//   var sum = 0;
+
+//   var myfun = function (curr) {
+//     if counter === n return sum;
+//     return myfun(curr);
+//   }
+
+
+//   return myfun(sum);
+// }
+// function fibonacci(n) {
+
+//   if (n < 0 || n === undefined) return null;
+//   return Math.round(Math.pow(((1 + Math.sqrt(5)) / 2), n) / Math.sqrt(5));
+// };
+
+
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610...
+
+// ------------------------------------------------------------------------------------------------------------------------
