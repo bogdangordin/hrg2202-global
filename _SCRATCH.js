@@ -872,6 +872,40 @@ function makeAnagram(a, b) {
 // ------------------------------------------------------------------------------------------------------------------------
 
 function minimumAbsoluteDifference(arr) {
-  // Write your code here
+  var min_diff = Number.POSITIVE_INFINITY;
 
+  for (var n = 1; n <= arr.length - 1; n++) {
+      var curr = arr[n];
+      var m = n - 1;
+
+      while ((m > -1) && (curr < arr[m])) {
+          arr[m + 1] = arr[m];
+          m--;
+      }
+
+      arr[m + 1] = curr;
+  }
+
+  // arr = arr.sort();
+
+  for (var o = 1; o <= arr.length - 1; o++) {
+
+      min_diff = Math.abs(arr[o-1] - arr[o]) < min_diff ? Math.abs(arr[o-1] - arr[o]) : min_diff;
+
+      if (min_diff === 0) {
+          console.log('SKIP');
+          return min_diff;
+      }
+  }
+
+
+  return min_diff;
 }
+
+// console.log(minimumAbsoluteDifference([1, -3, 71, 68, 17]));
+// console.log(minimumAbsoluteDifference());
+// console.log(minimumAbsoluteDifference()); // 334
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+
