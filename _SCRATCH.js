@@ -915,3 +915,82 @@ function fibonacci(n) {
 // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610...
 
 // ------------------------------------------------------------------------------------------------------------------------
+
+function isValid(s) {
+  var found_diff = false;
+  var unq_chars = [... new Set(s.split(''))];
+  var nums = [];
+  var dict = {}
+
+  unq_chars.forEach((char) => {
+    dict[char] = s.split(char).length - 1;
+    nums.push(s.split(char).length - 1);
+  });
+
+  for (var n = 0; n <= nums.length - 1; n++) {
+    for (var m = n + 1; m <= nums.length - 1; m++) {
+      console.log(nums[n], nums[m]);
+
+    }
+  }
+
+  return dict;
+}
+
+// console.log(isValid('aabbcd')); // NO // need to remove two chars, either a and b orrrr c and d to make str valid
+// console.log(isValid('aabbccddeefghi')); //
+// console.log(isValid('abcdefghhgfedecba')); // YES // need to remove only the one e
+
+// ------------------------------------------------------------------------------------------------------------------------
+
+function combine(chg1, chg2) {
+  var chgs = (chg1 + '\n\n' + chg2).split('\n\n');
+
+  chgs.sort((a, b) => {
+
+    if (b.split('\n')[0].split('.')[0] === a.split('\n')[0].split('.')[0]) {
+
+      if (b.split('\n')[0].split('.')[1] === a.split('\n')[0].split('.')[1]) {
+        return b.split('\n')[0].split('.')[2] - a.split('\n')[0].split('.')[2];
+      }
+
+      return b.split('\n')[0].split('.')[1] - a.split('\n')[0].split('.')[1];
+    }
+
+    return b.split('\n')[0].split('.')[0] - a.split('\n')[0].split('.')[0];
+  });
+
+
+  return 'CHANGLE LOG\n\n' + chgs.join('\n\n');
+}
+
+
+var str = `30.0.1
+-------
+*text
+*text
+
+2.22.11
+-------
+*text
+*text`;
+
+var str2 = `2.22.2
+-------
+*text
+*text
+
+2.229.1
+-------
+*text
+*text
+
+1.0.1
+-------
+*text
+*text`;
+
+console.log(combine(str, str2));
+
+// ------------------------------------------------------------------------------------------------------------------------
+
